@@ -29,6 +29,11 @@ rename `config.defaults.json` to `config.json` and edit the values within proper
 
 visit `https://host:8443/api/setup` and receive your admin credentials.
 
-will dockerize and shit later.
+## todo
+
+`[ ] add additional user apis`
+`[ ] frontend`
+`[ ] rate limiting`
+`[ ] dockerize and shit`
 
 
