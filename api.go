@@ -243,10 +243,12 @@ func ListThread(w http.ResponseWriter, r *http.Request) {
 			log.Fatalf("q.All(): %q\n", err)
 		}
 
-		for _, b := range dbthreads {
-			if IsAdmin(value["hash"]) == true || IsMod(value["hash"]) == true {
+		if IsAdmin(value["hash"]) == true || IsMod(value["hash"]) == true {
+			for _, b := range dbthreads {
 				threads = append(threads, Thread{b.ID, b.Board, b.Author, b.Title, b.Body, uint64(b.Created.Unix()), uint64(b.LastModified.Unix()), b.IP, b.IsSticky, b.IsLocked})
-			} else {
+			}
+		} else {
+			for _, b := range dbthreads {
 				threads = append(threads, Thread{b.ID, b.Board, b.Author, b.Title, b.Body, uint64(b.Created.Unix()), uint64(b.LastModified.Unix()), "", b.IsSticky, b.IsLocked})
 			}
 		}
@@ -288,10 +290,12 @@ func GetThread(w http.ResponseWriter, r *http.Request) {
 			log.Fatalf("q2.All(): %q\n", err)
 		}
 
-		for _, b := range dbposts {
-			if IsAdmin(value["hash"]) == true || IsMod(value["hash"]) == true {
+		if IsAdmin(value["hash"]) == true || IsMod(value["hash"]) == true {
+			for _, b := range dbposts {
 				posts = append(posts, Post{b.ID, b.Thread, b.Author, b.Body, uint64(b.Created.Unix()), uint64(b.LastModified.Unix()), b.IP})
-			} else {
+			}
+		} else {
+			for _, b := range dbposts {
 				posts = append(posts, Post{b.ID, b.Thread, b.Author, b.Body, uint64(b.Created.Unix()), uint64(b.LastModified.Unix()), ""})
 			}
 		}
@@ -390,7 +394,12 @@ func GetPost(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Fatalf("q.One(): %q\n", err)
 		}
-		post = Post{dbpost.ID, dbpost.Thread, dbpost.Author, dbpost.Body, uint64(dbpost.Created.Unix()), uint64(dbpost.LastModified.Unix()), ""}
+
+		if IsAdmin(value["hash"]) == true || IsMod(value["hash"]) == true {
+			post = Post{dbpost.ID, dbpost.Thread, dbpost.Author, dbpost.Body, uint64(dbpost.Created.Unix()), uint64(dbpost.LastModified.Unix()), dbpost.IP}
+		} else {
+			post = Post{dbpost.ID, dbpost.Thread, dbpost.Author, dbpost.Body, uint64(dbpost.Created.Unix()), uint64(dbpost.LastModified.Unix()), ""}
+		}
 
 		output, _ := json.Marshal(post)
 		fmt.Fprintln(w, string(output[:]))
