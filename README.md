@@ -32,8 +32,28 @@ visit `https://host:8443/api/setup` and receive your admin credentials.
 ## todo
 
 `[ ] add additional user apis`
+
 `[ ] frontend`
+
 `[ ] rate limiting`
+
 `[ ] dockerize and shit`
+
+## remember eternal
+
+```
+sd1
+smurda
+brand0n
+adrian
+lxuke
+justincredible
+toyo4321
+olaf
+rj2
+ib
+ackflags
+christophermichael
+```
 
 
