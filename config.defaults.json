@@ -1,0 +1,9 @@
+{
+    "MySQLHost": "localhost",
+    "MySQLUser": "root",
+    "MySQLPassword": "",
+    "MySQLDatabase": "3um",
+    "HashKey":  "00000000000000000000000000000000",
+    "BlockKey": "00000000000000000000000000000000",
+    "Salt":     "00000000000000000000000000000000"
+}

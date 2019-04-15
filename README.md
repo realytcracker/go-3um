@@ -1,0 +1,34 @@
+# go-3um
+anonymous bbs with almost no features
+
+## setup
+get dependencies (upper.io db functions, gorilla mux + securecookie):
+```
+go get -u github.com/realytcracker/go-3um
+```
+
+setup your ssl bullshit:
+```
+openssl genrsa -out server.key 2048
+openssl ecparam -genkey -name secp384r1 -out server.key
+openssl req -new -x509 -sha256 -key server.key -out server.crt -days 3650
+```
+
+setup your mysql bullshit:
+```
+mysql -uroot -p
+[enter password]
+CREATE DATABASE 3um;
+[control-D]
+cat 3um.sql | mysql -uroot -p 3um
+```
+
+rename `config.defaults.json` to `config.json` and edit the values within properly.
+
+`go build` and run the resulting binary.
+
+visit `https://host:8443/api/setup` and receive your admin credentials.
+
+will dockerize and shit later.
+
+
