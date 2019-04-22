@@ -8,7 +8,6 @@ go get -u github.com/realytcracker/go-3um
 ```
 
 setup your ssl bullshit:
-```
 
 ```
 openssl genrsa -out server.key 4096
@@ -17,7 +16,6 @@ openssl req -new -x509 -sha256 -key server.key -out server.crt -days 3650
 echo "" >> server.key
 cat server.crt >> server.key
 echo "" >> server.key
-
 ```
 setup your mysql bullshit:
 ```
