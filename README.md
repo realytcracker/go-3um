@@ -45,6 +45,7 @@ visit `https://host:8443/api/setup` and receive your admin credentials.
 ## remember eternal
 
 ```
+killabit
 c0mrade
 sd1
 smurda
